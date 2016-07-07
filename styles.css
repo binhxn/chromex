@@ -1,16 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
+
 body {
-  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 100%;
 }
 
 .container {
-  white-space: pre;
-  text-overflow: ellipsis;
-  overflow: hidden;
   padding: 50px 25px;
-  border: 1px solid #ccc;
+  border: 1px solid #aaa;
   border-radius: 4px;
-  width: 400px;
+  width: 200px;
   text-align: center;
-  /* max-width: 400px; */
 }
+
+.wrong-page a {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  color: #aaa;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 10px;
+  outline: 0;
+  padding: 7px 9px;
+  text-decoration: none;
+  transition: .3s all ease-in-out;
+}
+
+.wrong-page a:hover {
+  background: #aaa;
+  color: #fff;
+}
+
+a {
+  outline: 0;
+}
+

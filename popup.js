@@ -1,54 +1,5 @@
-// $(document).ready(function () {
-// 	var newURL = "http://www.urbandictionary.com/define.php?term=" + selection;
-
-// 	// selection of word
-// 	$(this).on('dblclick', function() {
-// 		chrome.tabs.create(url: newURL)
-// 	});
-
-// 	// console.log('hi');
-// });
-
-
-// function getword(info,tab) {
-
-// //Currently this simply checks for which menu item was clicked.
-//  if (info.menuItemId == "main_parent") {
-//    chrome.tabs.create({
-//       url: "https://www.google.com/search?q=" + info.selectionText,
-//    })
-//  }
-
-
-// chrome.tabs.executeScript( {
-//   code: "window.getSelection().toString();"
-// }, function(selection) {
-//   document.getElementById("status").value = selection[0];
-// });
-
-// TODO
-// var selection;
-
-
-
-// var work = function() {
-// 	console.log(window.getSelection().toString());
-// }
-
-// document.body.addEventListener('dblclick', work);
-
-
-
-// Create selection context
-
-// chrome.browserAction.onClicked.addListener(function(tab) {
-//   chrome.tabs.executeScript(tab.id,
-//       {code: 'window.getSelection().toString()'}, function(results) {
-//     alert(results[0]);
-//   });
-// });
-
-chrome.contextMenus.create({title: "Let's Urbandctionary it : '%s' ",
+chrome.contextMenus.create({title: "What's the urbandictionary definition of '%s'",
+														// Need brackets on selection to grab selected word on Chrome
 														contexts:["selection"],
 														onclick: function(info){
 														let link = "http://www.urbandictionary.com/define.php?term="+encodeURIComponent(info.selectionText);
@@ -56,7 +7,7 @@ chrome.contextMenus.create({title: "Let's Urbandctionary it : '%s' ",
 													}
 });
 
-chrome.contextMenus.create({title: "Let's Urbandctionary it : '%s' ",
+chrome.contextMenus.create({title: "What's the standard definition of '%s'",
 														contexts:["selection"],
 														onclick: function(info){
 														let link = "http://www.dictionary.com/browse/"+encodeURIComponent(info.selectionText);
@@ -64,27 +15,56 @@ chrome.contextMenus.create({title: "Let's Urbandctionary it : '%s' ",
 													}
 });
 
+chrome.contextMenus.create({title: "Discover the story of '%s' on Wikipedia",
+														contexts:["selection"],
+														onclick: function(info){
+														let link = "https://en.wikipedia.org/wiki/"+encodeURIComponent(info.selectionText);
+														chrome.windows.create({url: link});
+													}
+});
 
-// var title = "Search Urban Dictionary for 'selection'";
-// var id = chrome.contextMenus.create({"title": title, "contexts":["selection"], "onclick": genericOnClick});
-//
-// // A generic onclick callback function.
-// function genericOnClick(info, tab) {
-// 	var selectedWord = info.selectionText;
-// 	// not able to add to url
-// 	// var selectedWord = window.getSelection().toString();
-//
-// 	// googled encodeURIComponent
-// 	var urbanLink = "http://www.urbandictionary.com/define.php?term=" + encodeURIComponent(selectedWord);
-// 	// Open the new tab with the search query
-// 	chrome.windows.create({ url: urbanLink});
-// }
-//
-// // Update the contextMenus title
-// function updateContextMenu(id) {
-// 	// Update contextMenus with highlighted selection
-// 	chrome.contextMenus.update(id, {"title": "Search Urban Dictionary for '%s'"});
-// }
-//
-// // Updates the contextMenus title each time the menu is opened.
-// updateContextMenu(id);
+chrome.contextMenus.create({title: "How do you pronounce '%s' in Chinese",
+														contexts:["selection"],
+														onclick: function(info){
+														let link = "https://translate.google.com/?ion=1&espv=2&bav=on.2,or.r_cp.&bvm=bv.126130881,d.cGc&biw=1855&bih=951&dpr=1&um=1&ie=UTF-8&hl=en&client=tw-ob#en/zh-CN/"+encodeURIComponent(info.selectionText);
+														chrome.windows.create({url: link});
+													}
+});
+
+chrome.contextMenus.create({title: "Show me some pictures of '%s'",
+														contexts:["selection"],
+														onclick: function(info){
+														let link = "https://www.google.com/search?noj=1&site=imghp&tbm=isch&source=hp&biw=1855&bih=990&q="+encodeURIComponent(info.selectionText)
+														chrome.windows.create({url: link});
+													}
+});
+
+chrome.contextMenus.create({title: "I want to buy '%s'",
+														contexts:["selection"],
+														onclick: function(info){
+														let link = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords="+encodeURIComponent(info.selectionText)
+														chrome.windows.create({url: link});
+													}
+});
+
+
+	// // googled encodeURIComponent
+	// var urbanLink = "http://www.urbandictionary.com/define.php?term=" + encodeURIComponent(selectedWord);
+	// // Open the new tab with the search query
+	// chrome.windows.create({ url: urbanLink});
+
+$(document).ready(function () {
+	// Check for current URL
+	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+	  let url = tabs[0].url;
+	  // console.log(url);
+
+		if (url !== "http://www.urbandictionary.com/") {
+			let text = "<div class='wrong-page'>You're on the wrong site buddy. </br><a target='_blank' href='http://www.urbandictionary.com'>Go here</a></div>"
+			$('.container').append(text);
+		} else {
+			let text = "<div class='right-page'>Welcome back dawg!</div>"
+			$('.container').append(text);
+		}
+	});
+});
