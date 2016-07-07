@@ -1,15 +1,15 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
+  "name": "Help us help you",
   "description": "This extension shows a Google Image search result for the current page",
   "version": "1.0",
   "background": {
       "persistent": true,
-      "scripts": [ "popup.js","background.js" ]
+      "scripts": [ "popup.js" ]
    },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "/logos/icon.png",
     "default_popup": "popup.html"
   },
   "permissions": [
@@ -24,7 +24,12 @@
   "content_scripts": [
     {
     "include_globs":    [ "http://www.dictionary.com/browse/*?id=helpushelpyou",
-                          "http://www.urbandictionary.com/define.php*?id=helpushelpyou*"],
+                          "http://www.urbandictionary.com/define.php*?id=helpushelpyou*",
+                          "https://en.wikipedia.org/wiki/*?id=helpushelpyou",
+                          "https://translate.google.com/?id=helpushelpyou&ion=1&espv=2&bav=on.2,or.r_cp.&bvm=bv.126130881,d.cGc&biw=1855&bih=951&dpr=1&um=1&ie=UTF-8&hl=en&client=tw-ob#en/zh-CN/*",
+                          "https://www.google.com/search?id=helpushelpyou&noj=1&site=imghp&tbm=isch&source=hp&biw=1855&bih=990&q=*",
+                          "https://www.amazon.com/s/ref=nb_sb_noss_2?id=helpushelpyou&url=search-alias%3Daps&field-keywords=*",
+                          "http://losangeles.craigslist.org/search/sss?id=helpushelpyou&query=*"],
     "matches": [
         "http://*/*",
         "https://*/*"
