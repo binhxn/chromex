@@ -55,7 +55,16 @@ chrome.contextMenus.create({title: "Let's Urbandctionary it : '%s' ",
 														chrome.windows.create({url: link});
 													}
 });
-//
+
+chrome.contextMenus.create({title: "Let's Urbandctionary it : '%s' ",
+														contexts:["selection"],
+														onclick: function(info){
+														let link = "http://www.dictionary.com/browse/"+encodeURIComponent(info.selectionText);
+														chrome.windows.create({url: link});
+													}
+});
+
+
 // var title = "Search Urban Dictionary for 'selection'";
 // var id = chrome.contextMenus.create({"title": title, "contexts":["selection"], "onclick": genericOnClick});
 //
