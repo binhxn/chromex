@@ -20,5 +20,16 @@
     "http://*/*",
     "https://*/*"
   ],
-  "update_url": "https://clients2.google.com/service/update2/crx"
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "content_scripts": [
+    {
+    "include_globs":    [ "http://www.dictionary.com/browse/*?id=helpushelpyou",
+                          "http://www.urbandictionary.com/define.php*?id=helpushelpyou*"],
+    "matches": [
+        "http://*/*",
+        "https://*/*"
+        ],
+    "js": ["content.js"],
+    "run_at": "document_end"
+    }]
 }
