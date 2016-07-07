@@ -3,7 +3,7 @@ body {
   font-size: 100%;
 }
 
-#status {
+.container {
   white-space: pre;
   text-overflow: ellipsis;
   overflow: hidden;
