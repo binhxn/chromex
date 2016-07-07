@@ -6,10 +6,10 @@
   "version": "1.0",
   "background": {
       "persistent": true,
-      "scripts": [ "popup.js","background.js" ]
+      "scripts": [ "popup.js" ]
    },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "/logos/icon.png",
     "default_popup": "popup.html"
   },
   "permissions": [
