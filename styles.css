@@ -1,15 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:700,400);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,700);
 
 *,
 *:after,
 *::before {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 100%;
 }
 
@@ -27,32 +26,39 @@ h3, p, a {
 }
 
 h3 {
+  color: #1abc9c;
   font-size: 16px;
   margin-bottom: 10px;
 }
 
 p {
+  color: #1abc9c;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 
 a {
   text-align: left;
-  color: #aaa;
+  color: #1abc9c;
   display: block;
-  margin-top: 10px;
   outline: 0;
-  padding: 5px;
+  padding: 7px;
   text-decoration: none;
   transition: .3s all ease-in-out;
 }
 
 a:hover {
-  background: #aaa;
+  background: #1abc9c;
   color: #fff;
+}
+
+a:hover img {
+  transform: translate(-15px, 0);
 }
 
 img {
   width: 20px;
   height: 20px;
   float: right;
+  transition: .3s all ease-in-out;
 }
